@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes moveRight {
+  0% { 
+    transform: translateX(0) translateY(-50%); 
+  }
+  50% { 
+    transform: translateX(280px) translateY(-50%); 
+  }
+  100% { 
+    transform: translateX(0) translateY(-50%); 
+  }
+}
+
+@keyframes moveRight {
+  0% { 
+    transform: translateX(-100px) translateY(-50%); 
+  }
+  50% { 
+    transform: translateX(calc(100vw - 100px)) translateY(-50%); 
+  }
+  100% { 
+    transform: translateX(-100px) translateY(-50%); 
+  }
+}
+
+.animate-moveRight {
+  animation: moveRight 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading animation improvements */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .7;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus, 
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-control-zoom {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  border-radius: 0;
+}
+
+/* Card hover effects */
+.bus-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.bus-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Bus Details specific styles */
+.bus-marker {
+  z-index: 1000;
+}
+
+.stop-marker {
+  z-index: 999;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .leaflet-control-container {
+    display: none;
+  }
+  
+  .leaflet-popup-content-wrapper {
+    font-size: 14px;
+  }
+}
+
+/* Reduce map tile loading animations on slow connections */
+@media (prefers-reduced-motion: reduce) {
+  .leaflet-tile {
+    transition: none !important;
+  }
+}
+
+/* Custom scrollbar for stops list */
+.stops-container {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.stops-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.stops-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.stops-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
